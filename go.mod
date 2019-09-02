@@ -1,3 +1,3 @@
 module github.com/miratronix/raggort
 
-require github.com/miratronix/lingo v0.0.0-20190403024428-195c46a18c87
+require github.com/miratronix/lingo v0.0.0-20190403022712-88a2e0b00924
