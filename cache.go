@@ -45,15 +45,10 @@ func (c *Cache) AddRequest(request *Request, timeout time.Duration) chan *HTTPRe
 	timer := time.NewTimer(timeout)
 	stopChannel := make(chan struct{})
 	go func() {
-		for {
-			select {
-			case <-stopChannel:
-				return
-
-			case <-timer.C:
-				c.AddResponse(newTimeoutResponse(request.ID))
-				return
-			}
+		select {
+		case <-stopChannel:
+		case <-timer.C:
+			c.AddResponse(newTimeoutResponse(request.ID))
 		}
 	}()
 
